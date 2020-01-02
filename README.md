@@ -19,7 +19,7 @@ logger.fiddlerLogger("debug",e,e.stack);
 logger.fiddlerLogger("error",e,e.stack);
 ```
 
-## Usage in Angular 8 component
+## Usage in Angular 8 app.module
 
 ```javascript
 import {NgxElectronModule} from 'ngx-electron';
