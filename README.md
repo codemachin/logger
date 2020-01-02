@@ -19,13 +19,31 @@ logger.fiddlerLogger("debug",e,e.stack);
 logger.fiddlerLogger("error",e,e.stack);
 ```
 
-## Usage in Angular 8
+## Usage in Angular 8 component
+
+```javascript
+import {NgxElectronModule} from 'ngx-electron';
+
+@NgModule({
+  imports: [NgxElectronModule]
+})
+```
+
+## Usage in Angular 8 component
 
 ```javascript
 import {ElectronService} from 'ngx-electron';
-const logger = this._electronService.remote.require('@vivekshankar/logger').FiddlerLog;
-this.logger = logger.getInstance();
-this.logger.fiddlerLogger("info",'log from client',new Error('re').stack);
+
+export class WelcomeComponent {
+    public logger:any
+    constructor(private _electronService: ElectronService) { 
+        if(this._electronService.isElectronApp) {
+            const logger = this._electronService.remote.require('@vivekshankar/logger').FiddlerLog
+            this.logger = logger.getInstance();
+            this.logger.fiddlerLogger("info",'log from client',new Error('re').stack);
+        }
+    }
+}
 ```
 
 ## Contributing
